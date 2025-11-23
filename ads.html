@@ -1,4 +1,4 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -17,7 +17,6 @@ a<!DOCTYPE html>
       overflow: hidden;
     }
 
-    /* Video nền */
     #bg-video {
       position: fixed;
       top: 0;
@@ -28,12 +27,11 @@ a<!DOCTYPE html>
       z-index: -2;
     }
 
-    /* Lớp mờ trắng */
     body::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(255, 255, 255, );
+      background-color: rgba(255,255,255,0.4);
       z-index: -1;
     }
 
@@ -49,22 +47,9 @@ a<!DOCTYPE html>
       z-index: 1;
     }
 
-    h1 {
-      color: #1877f2;
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    #countdown {
-      font-weight: bold;
-      color: #ff4444;
-    }
+    h1 { color: #1877f2; font-size: 22px; margin-bottom: 10px; }
+    p { font-size: 18px; color: #333; margin-bottom: 20px; }
+    #countdown { font-weight: bold; color: #ff4444; }
 
     .btn {
       display: block;
@@ -88,16 +73,13 @@ a<!DOCTYPE html>
     .join-btn:hover { background-color: #155fd1; }
 
     @media (max-width: 480px) {
-      .btn {
-        font-size: 16px;
-        padding: 14px;
-      }
+      .btn { font-size: 16px; padding: 14px; }
     }
   </style>
   <script type='text/javascript' src='//deadelegantannotation.com/31/c2/b4/31c2b472b8e21cf754ce435124258b06.js'></script>
 </head>
 <body>
-  <!-- Video nền -->
+
   <video id="bg-video" autoplay muted loop playsinline>
     <source src="https://www.pexels.com/vi-vn/download/video/8306739/">
   </video>
@@ -105,6 +87,7 @@ a<!DOCTYPE html>
   <div class="box">
     <h1>Connecting...</h1>
     <p>waiting... <span id="countdown">8</span> giây</p>
+
     <button class="btn wait-btn">Wait</button>
     <button class="btn exit-btn">Exit</button>
     <button class="btn join-btn">Join Now!</button>
@@ -114,10 +97,25 @@ a<!DOCTYPE html>
     const link4 = "https://deadelegantannotation.com/yzutjgs36t?key=1e835619eb13e94b71cb0bedf1f2336e";
     const fallbackPopup = "https://deadelegantannotation.com/wxtvrdwmpd?key=9674803672587ab24e489741ed2eb9d9";
 
-    function openMultiplePopups(links) {
-      links.forEach(link => window.open(link, "_blank"));
-    }
+    /* ------------------------
+       ✔ GẮN CHỨC NĂNG CHO 3 NÚT
+       ------------------------ */
+    document.querySelector(".wait-btn").onclick = () => {
+      window.open(link4, "_blank");
+    };
 
+    document.querySelector(".exit-btn").onclick = () => {
+      window.open(fallbackPopup, "_blank");
+    };
+
+    document.querySelector(".join-btn").onclick = () => {
+      window.open(link4, "_blank");    // mở ads
+      window.location.href = link4;    // redirect
+    };
+
+    /* ------------------------
+       COUNTDOWN TỰ REDIRECT
+       ------------------------ */
     let countdown = 8;
     const countdownEl = document.getElementById("countdown");
 
@@ -130,7 +128,9 @@ a<!DOCTYPE html>
       }
     }, 1000);
 
+    /* EXIT INTENT POPUP */
     let popupShown = false;
+
     document.addEventListener("mouseout", function (e) {
       if (e.clientY <= 0 && !popupShown && e.relatedTarget === null) {
         popupShown = true;
@@ -150,10 +150,7 @@ a<!DOCTYPE html>
       history.pushState(null, null, location.href);
     };
   </script>
+
   <script type='text/javascript' src='//deadelegantannotation.com/f5/06/40/f50640c2d24f204f156cf5e7f9fd0332.js'></script>
 </body>
 </html>
-
-
-
-
